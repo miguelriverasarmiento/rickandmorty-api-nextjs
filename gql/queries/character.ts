@@ -8,26 +8,8 @@ const GET_CHARACTER = gql`
       status
       species
       gender
-      origin {
-        id
-        name
-        type
-        dimension
-      }
-      location {
-        id
-        name
-        type
-        dimension
-      }
       image
-      episode {
-        id
-        name
-        air_date
-      }
     }
   }
 `
-
 export default GET_CHARACTER

@@ -1,11 +1,10 @@
 import Head from 'next/head'
-import Link from "next/link";
 import styles from '@/styles/Home.module.css'
 import GET_CHARACTERS from '../gql/queries/characters'
 import {CharactersResponse} from '../types/characters-interface'
-//import CharacterCard from '../components/AllCharacters'
 import client from '../gql/apollo-client'
 import { useRouter } from "next/router";
+import FindCharacter from '../components/find-character'
 
   const Characters: React.FC<{data: CharactersResponse}> = ({data}) => {
     const router = useRouter();
@@ -15,6 +14,7 @@ import { useRouter } from "next/router";
         <Head>
         <title>Rick and Morty</title>
         </Head>
+        <FindCharacter />
         <div>
           <ul>
             {data.characters.results.map((character) => (
