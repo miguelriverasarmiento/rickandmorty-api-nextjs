@@ -1,10 +1,15 @@
 import { useState } from 'react'
 import { useRouter } from "next/router";
+import {Character} from '../types/characters-interface' 
 
+interface AppState {
+  namefind: Array<Character>
+}
 const FindCharacter: React.FC = () => {
 
   const [nameChar, setNameChar] = useState<string>();
-  const [nameFind, setNameFind] = useState<string>([]);
+  const [nameFind, setNameFind] = useState<AppState["namefind"]>();
+
   const router = useRouter();
 
   async function fetchCharacter(nameChar: string | undefined) {
@@ -34,7 +39,7 @@ const FindCharacter: React.FC = () => {
       />
       <button onClick={() => handleSearch()}>Buscar</button>
       <div>
-        {nameFind.map((name: string) =>
+        {nameFind?.map((name) =>
           <li onClick={() => router.push(`/character/${name.id}`)} key={name.id}>{name.name}</li>
         )}
       </div>
